@@ -14,30 +14,27 @@ def main():
 
 def compress(img):
     (w, _) = img.shape
-    print(img)
-    ucl = is_unicolor(img)
-    print(ucl)
-    if ucl:
-        if img[0,0] == 1:
+    # print(img)
+
+    if is_unicolor(img):
+        if img[0, 0] == 1:
             return "11"
-        elif img[0,0] == 0:
+        elif img[0, 0] == 0:
             return "10"
         else:
-            raise('invalid colour')
+            raise Exception('invalid color')
 
-
-    print('calcing')
-    a = compress(img[0:w//2, 0:w//2])
-    b = compress(img[0:w//2, w//2:w])
-    c = compress(img[w//2:w, 0:w//2])
-    d = compress(img[w//2:w, w//2:w])
+    # print('splitting')
+    a = compress(img[0:w // 2, 0:w // 2])
+    b = compress(img[0:w // 2, w // 2:w])
+    c = compress(img[w // 2:w, 0:w // 2])
+    d = compress(img[w // 2:w, w // 2:w])
     return "0" + a + b + c + d
 
 
 def show():
     plt.imshow(example_image[0:4, 0:4])
     plt.show()
-
 
 
 def is_unicolor(img):

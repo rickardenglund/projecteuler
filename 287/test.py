@@ -1,8 +1,7 @@
 import unittest
 import numpy
 
-from main import is_unicolor
-from main import compress
+from main import is_unicolor,compress, example_image
 
 
 class Testfunctions(unittest.TestCase):
@@ -28,3 +27,5 @@ class Testfunctions(unittest.TestCase):
         img = numpy.array([[1]])
         self.assertEqual("11", compress(img))
 
+    def test_example(self):
+        self.assertEqual("0100101111101110", compress(example_image))

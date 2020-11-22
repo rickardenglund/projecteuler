@@ -1,0 +1,2 @@
+run:
+	lli custom.ll
